@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}{{ profile.full_name }} | Profile Manager{% endblock %}
+{% block content %}
+<section class="form-card">
+    <div class="page-heading">
+        <h1>User profile</h1>
+        <a class="button secondary" href="{{ url_for('edit_profile', profile_id=profile.id) }}">Edit profile</a>
+    </div>
+    <dl class="details">
+        <dt>Full name</dt><dd>{{ profile.full_name }}</dd>
+        <dt>Email address</dt><dd>{{ profile.email }}</dd>
+        <dt>Phone number</dt><dd>{{ profile.phone }}</dd>
+        <dt>Date of birth</dt><dd>{{ profile.date_of_birth }}</dd>
+    </dl>
+    <a href="{{ url_for('index') }}">← Back to all profiles</a>
+</section>
+{% endblock %}

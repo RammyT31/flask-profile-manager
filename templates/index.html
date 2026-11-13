@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Profiles | Profile Manager{% endblock %}
+{% block content %}
+<section class="page-heading">
+    <div>
+        <h1>Registered profiles</h1>
+        <p>View the profiles saved in the database.</p>
+    </div>
+    <a class="button" href="{{ url_for('register') }}">Register a user</a>
+</section>
+
+{% if profiles %}
+<div class="profile-grid">
+    {% for profile in profiles %}
+    <article class="card">
+        <h2>{{ profile.full_name }}</h2>
+        <p>{{ profile.email }}</p>
+        <p>{{ profile.phone }}</p>
+        <a href="{{ url_for('view_profile', profile_id=profile.id) }}">View profile →</a>
+    </article>
+    {% endfor %}
+</div>
+{% else %}
+<div class="empty-state">
+    <h2>No profiles yet</h2>
+    <p>Register the first user to see their details here.</p>
+    <a class="button" href="{{ url_for('register') }}">Create profile</a>
+</div>
+{% endif %}
+{% endblock %}

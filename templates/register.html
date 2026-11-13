@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Register | Profile Manager{% endblock %}
+{% block content %}
+<section class="form-card">
+    <h1>Create a profile</h1>
+    <p>Complete all fields to register a user.</p>
+    <form method="post" action="{{ url_for('register') }}">
+        <label for="full_name">Full name</label>
+        <input id="full_name" name="full_name" type="text" required minlength="2"
+               value="{{ form_data.get('full_name', '') }}">
+
+        <label for="email">Email address</label>
+        <input id="email" name="email" type="email" required
+               value="{{ form_data.get('email', '') }}">
+
+        <label for="phone">Phone number</label>
+        <input id="phone" name="phone" type="tel" required
+               value="{{ form_data.get('phone', '') }}">
+
+        <label for="date_of_birth">Date of birth</label>
+        <input id="date_of_birth" name="date_of_birth" type="date" required
+               value="{{ form_data.get('date_of_birth', '') }}">
+
+        <button class="button" type="submit">Register profile</button>
+    </form>
+</section>
+{% endblock %}
